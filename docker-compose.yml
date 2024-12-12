@@ -20,12 +20,12 @@ services:
   postgres:
     image: postgres:15
     container_name: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 020904
-      POSTGRES_DB: blog
     ports:
       - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=020904
+      - POSTGRES_DB=blog
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
