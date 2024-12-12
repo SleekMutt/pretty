@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+    <header class="bg-pink-100 shadow-md">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <h:form>
+                <h:commandButton action="#{redirectBean.redirectToHome()}" value="Pretty Blog"
+                                 styleClass="text-3xl font-bold text-pink-600 hover:text-pink-700 transition-colors">
+                </h:commandButton>
+            </h:form>
+            <div class="flex items-center space-x-4">
+                <h:form>
+                    <h:commandButton action="#{redirectBean.redirectToCreate()}" value="Create Post"
+                                     styleClass="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-md transition-colors">
+                    </h:commandButton>
+                </h:form>
+                <h:form>
+                    <h:commandButton action="#{signupBean.logout()}"
+                            value="Logout"
+                                     class="px-4 py-2 text-sm font-medium text-pink-600 bg-white border border-pink-600 rounded-md hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 transition-colors"
+                    >
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
+    </header>
+</ui:composition>

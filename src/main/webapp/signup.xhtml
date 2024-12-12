@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<head>
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400 animate-gradient">
+<div class="w-full max-w-md">
+    <div class="bg-white shadow-2xl rounded-3xl overflow-hidden transform transition-all hover:scale-105 duration-300">
+        <div class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-8">
+            <h2 class="text-3xl font-extrabold text-center">Welcome!</h2>
+            <p class="text-pink-100 text-center mt-2">Please create your new account</p>
+        </div>
+        <h:form class="p-8 space-y-6">
+            <div class="space-y-2">
+                <h:outputLabel for="username" class="block text-sm font-medium text-gray-700" value="Username"/>
+                <h:inputText
+                        type="text"
+                        name="j_username"
+                        id="username"
+                        value="#{signupBean.username}"
+                        placeholder="Enter your username"
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200"
+                        required="true"
+                />
+            </div>
+            <div class="space-y-2">
+                <h:outputLabel for="password" class="block text-sm font-medium text-gray-700" value="Password"/>
+                <div class="relative">
+                    <h:inputText
+                            value="#{signupBean.password}"
+                            type="password"
+                            name="j_password"
+                            id="password"
+                            placeholder="Enter your password"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200"
+                            required="true"
+                    />
+                    <button
+                            type="button"
+                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                            onclick="togglePasswordVisibility()"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd"
+                                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <h:commandButton
+                        action="#{signupBean.register()}"
+                        value="Sign In"
+                        type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-200"
+                >
+
+                </h:commandButton>
+            </div>
+        </h:form>
+        <div class="px-8 pb-8 text-center">
+            <p class="text-sm text-gray-600">
+                You have account already?
+                <h:form>
+                    <h:commandButton value="Sign in now"
+                                     action="#{redirectBean.redirectToLogin()}"
+                                     class="font-medium text-purple-600 hover:text-purple-500">
+
+                    </h:commandButton>
+                </h:form>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+    }
+</script>
+</body>
+</html>
