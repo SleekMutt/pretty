@@ -19,6 +19,11 @@ RUN chmod +x /opt/glassfish7/configure-jdbc.sh && \
 
 EXPOSE 8080 4848
 
+ADD password_1.txt /tmp/password_1.txt
+ADD password_2.txt /tmp/password_2.txt
+RUN asadmin --user admin --passwordfile /tmp/password_1.txt change-admin-password --domain_name domain1 ; asadmin start-domain domain1 ; asadmin --user admin --passwordfile /tmp/password_2.txt enable-secure-admin ; asadmin stop-domain domain1
+RUN rm /tmp/password_?.txt
+
 COPY demo5-1.0-SNAPSHOT.war $GLASSFISH_HOME/domains/domain1/autodeploy/
 
 CMD ["asadmin","start-domain", "--verbose"]
